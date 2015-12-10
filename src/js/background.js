@@ -31,9 +31,6 @@
             .catch(() => ga('send', 'event', 'onerror', report));
     };
 
-    chrome.browserAction.setBadgeBackgroundColor({
-        color: [100, 100, 100, 255]
-    });
     utils.updateBadge();
 
     chrome.runtime.onInstalled.addListener(details => { // установка или обновление расширения

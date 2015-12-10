@@ -38,7 +38,7 @@
         "page": "options/options.html",
         "chrome_style": true
     },
-    "browser_action": {
+    "page_action": {
         "default_title": "Yandex Music Fisher",
         "default_popup": "popup/popup.html",
         "default_icon": "img/black.png"

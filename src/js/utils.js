@@ -149,6 +149,14 @@
     };
 
     utils.updateTabIcon = tab => {
+        let re = /^https?:\/\/music\.yandex\.ru.*/i;
+        if (!re.test(tab.url)){
+            chrome.pageAction.hide(tab.id);
+            return;
+        }else{
+            chrome.pageAction.show(tab.id);
+        }
+
         let page = utils.getUrlInfo(tab.url);
         let iconPath = 'img/black.png';
         if (page.isPlaylist) {
@@ -160,7 +168,7 @@
         } else if (page.isArtist || page.isLabel) {
             iconPath = 'img/pink.png';
         }
-        chrome.browserAction.setIcon({
+        chrome.pageAction.setIcon({
             tabId: tab.id,
             path: iconPath
         });
@@ -201,9 +209,6 @@
         if (count) {
             countStr = count.toString();
         }
-        chrome.browserAction.setBadgeText({
-            text: countStr
-        });
     };
 
     utils.checkUpdate = () => new Promise(resolve => {
